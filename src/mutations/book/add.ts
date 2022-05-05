@@ -7,25 +7,27 @@ type Args = {
     authorId: string;
 };
 
-const addBookMutation = async (parent: unknown, args: Args):Promise<BookDoc> => {
-    
-    let author = await Author.findById(args.authorId);
+const addBookMutation = async (
+  parent: unknown,
+  args: Args
+): Promise<BookDoc | null> => {
+  let author = await Author.findById(args.authorId)
 
-    if (!author) {
-        console.error('Invalid authorId! Please supply a correct author id');
+  if (!author) {
+    console.error('Invalid authorId! Please supply a correct author id')
 
-        return;
-    }
+    return null
+  }
 
-    let book = Book.build({
-        name: args.name, genre: args.genre,
-        author,
-    })
+  let book = Book.build({
+    name: args.name,
+    genre: args.genre,
+    author
+  })
 
-    book = await book.save();
+  book = await book.save()
 
-    return book;
-
-};
+  return book
+}
 
 export default addBookMutation;

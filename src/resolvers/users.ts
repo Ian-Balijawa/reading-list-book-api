@@ -1,12 +1,9 @@
 import User, { UserDoc } from "../models/User";
 
-const usersResolvers = async ():  Promise<
-	(UserDoc & {
-		_id: any;
-	})[]> => {
-    const users = await User.find({});
+const usersResolvers = async (): Promise<UserDoc[]> => {
+  const users = await User.find({})
 
-    return users;
+  return users
 }
 
 export default usersResolvers

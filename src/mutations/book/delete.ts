@@ -6,12 +6,12 @@ type Args = {
 };
 
 const deleteBookMutation = async (
-	parent: unknown,
-	args: Args
-): Promise<BookDoc> => {
-    let deletedBook = await Book.findByIdAndRemove(args.bookId)
-	
-    return deletedBook;
-};
+  parent: unknown,
+  args: Args
+): Promise<BookDoc | null> => {
+  let deletedBook = await Book.findByIdAndRemove(args.bookId)
+
+  return deletedBook
+}
 
 export default deleteBookMutation;

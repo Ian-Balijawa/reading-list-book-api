@@ -5,20 +5,19 @@ type Args = {
 };
 
 const deleteUserMutation = async (
-	parent: unknown,
-	args: Args
-): Promise<UserDoc> => {
+  parent: unknown,
+  args: Args
+): Promise<UserDoc | null> => {
+  const userExits = await User.findById(args.id)
 
-	const userExits = await User.findById(args.id);
+  if (userExits) {
+    console.error('User does not exist.')
+    return null
+  }
 
-	if (userExits) {
-        console.error('User does not exist.');
-        return;
-	}
+  const deletedUser = await User.findByIdAndRemove(args.id)
 
-    const deletedUser = await User.findByIdAndRemove(args.id)
-    
-    return deletedUser;
-};
+  return deletedUser
+}
 
 export default deleteUserMutation;

@@ -6,26 +6,29 @@ type Args = {
     password:string,
 };
 
-const addUserMutation = async (parent: unknown, args: Args):Promise<UserDoc> => {
-    
-    const { name, email,password } = args;
+const addUserMutation = async (
+  parent: unknown,
+  args: Args
+): Promise<UserDoc | null> => {
+  const { name, email, password } = args
 
-    const userExits = await User.findOne({email});
+  const userExits = await User.findOne({ email })
 
-    if (userExits) {
-        console.error('Invalid Credentials. Email already in use');
-        return;
-    }
+  if (userExits) {
+    console.error('Invalid Credentials. Email already in use')
+    return null
+  }
 
-    let user = User.build({
-    name, email,
-    password,
-    });
-    
-    //TODO: user.password = Password.toHash(user.password)
-    user = await user.save();
+  let user = User.build({
+    name,
+    email,
+    password
+  })
 
-    return user;
-};
+  //TODO: user.password = Password.toHash(user.password)
+  user = await user.save()
+
+  return user
+}
 
 export default addUserMutation;
