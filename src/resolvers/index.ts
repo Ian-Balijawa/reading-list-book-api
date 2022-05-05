@@ -12,27 +12,27 @@ import addUserMutation from "../mutations/user/add";
 import deleteUserMutation from "../mutations/user/delete";
 
 const resolvers = {
-    Query: {
+  Query: {
+    // GET: => RESOLVERS   <--> MORE LIKE GET REQUESTS
+    book: bookResolver,
+    user: userResolver,
+    author: authorResolver,
+    books: booksResolver,
+    users: usersResolvers,
+    authors: authorsResolvers
+  },
+  Mutation: {
+    // POST: => MUTATION   <--> MORE LIKE POST REQUESTS
+    addAuthor: addAuthorMutation,
+    addBook: addBookMutation,
+    addUser: addUserMutation,
 
-        // GET: => RESOLVERS   <--> MORE LIKE GET REQUESTS
-        book:bookResolver,
-        user:userResolver,
-        author:authorResolver,
-        books:booksResolver,
-        users:usersResolvers,
-        authors: authorsResolvers,
-        
-        // ADD: => MUTATION RESOLVERS  <--> MORE LIKE POST REQUESTS
-        addUser:addUserMutation,
-        addBook:addBookMutation,
-        addAuthor: addAuthorMutation,
-        
-        // REMOVE: => MUTATION RESOLVERS <--> MORE LIKE DELETE REQUESTS 
-        removeUser:deleteUserMutation,
-        removeBook:deleteBookMutation,
-        removeAuthor:deleteAuthorMutation,
-    }
-};
+    // DELETE: => MUTATION   <--> MORE LIKE DELETE REQUESTS
+    removeAuthor: deleteAuthorMutation,
+    removeBook: deleteBookMutation,
+    removeUser: deleteUserMutation
+  }
+}
 
 
 export default resolvers;

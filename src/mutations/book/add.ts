@@ -19,7 +19,12 @@ const addBookMutation = async (
     return null
   }
 
-  let book = Book.build({
+  // let book = Book.build({
+  //   name: args.name,
+  //   genre: args.genre,
+  //   author
+  // })
+  let book = new Book({
     name: args.name,
     genre: args.genre,
     author

@@ -10,7 +10,10 @@
     "start": "concurrently npm:start:*"
   },
   "dependencies": {
+    "@graphql-tools/load-files": "^6.5.3",
+    "@graphql-tools/merge": "^8.2.10",
     "apollo-server": "^2.23.0",
+    "babel-plugin-import-graphql": "^2.8.1",
     "graphql": "^15.5.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.2",

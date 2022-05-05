@@ -19,10 +19,16 @@ const addUserMutation = async (
     return null
   }
 
-  let user = User.build({
+  // let user = User.build({
+  //   name,
+  //   email,
+  //   password
+  // })
+
+  let user = new User({
     name,
     email,
-    password
+    password,
   })
 
   //TODO: user.password = Password.toHash(user.password)

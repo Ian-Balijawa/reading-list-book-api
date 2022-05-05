@@ -51,9 +51,9 @@ userSchema.statics.build = (attrs: UserAttrs) => {
 	return new User(attrs);
 };
 
-userSchema.statics.generateAuthenticationToken = function(user: UserDoc){
-    // TODO: Implement a JWT generator
-    return 'jwt token'
+userSchema.statics.generateAuthenticationToken = (user: UserDoc): string => {
+  // TODO: Implement a JWT generator
+  return 'jwt token'
 }
 
 export default User;

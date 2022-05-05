@@ -14,25 +14,33 @@ interface AuthorModel extends mongoose.Model<AuthorDoc> {
     build(attrs: AuthorAttrs): AuthorDoc;
 }
 
-const authorSchema = new mongoose.Schema({
+const authorSchema = new mongoose.Schema(
+  {
     name: {
-        type: String,
-        required:true
+      type: String,
+      required: true
     },
     age: {
-        type: Number,
-        min:0,
-        required:true,
+      type: Number,
+      min: 0,
+      required: true
+    },
+    book: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: 'Book',
+      required: true
     }
-}, {
+  },
+  {
     toJSON: {
-        transform(doc, ret) {
-            ret.id = ret._id;
-            delete ret._id;
-            delete ret.__v;
-        }
+      transform(doc, ret) {
+        ret.id = ret._id
+        delete ret._id
+        delete ret.__v
+      }
     }
-});
+  }
+)
 
 
 const Author = mongoose.model<AuthorDoc, AuthorModel>('Author', authorSchema);

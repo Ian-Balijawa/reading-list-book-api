@@ -8,7 +8,11 @@ const bookResolver = async (
   parent: unknown,
   args: Args
 ): Promise<BookDoc | null> => {
-  const book = await Book.findById(args.id).populate('Author')
+  const book = await Book.findById(args.id).populate({
+    path: 'author',
+    select: 'name -_id id age'
+  })
+  
   return book
 }
 

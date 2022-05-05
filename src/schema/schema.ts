@@ -8,15 +8,16 @@ const typeDefs = gql`
   }
 
   type Book {
+    id: String!
     name: String!
     genre: String!
     author: Author!
   }
 
   type Author {
+    id: String!
     name: String!
     age: Int!
-    id: String!
   }
 
   input UserInput {
@@ -41,15 +42,18 @@ const typeDefs = gql`
     users: [User]
     books: [Book]
     authors: [Author]
-    user(input: UserInput): User
-    book(input: BookInput): Book
-    author(input: AuthorInput): Author
-    addUser(input: UserInput): User
-    addBook(input: BookInput): Book
-    addAuthor(input: AuthorInput): Author
-    removeUser(input: UserInput): User
-    removeBook(input: BookInput): Book
-    removeAuthor(input: AuthorInput): Author
+    user(email: String): User
+    book(id: String!): Book
+    author(id: String!): Author
+  }
+
+  type Mutation {
+    addUser(name: String!, email: String!, password: String!): User
+    addBook(name: String!, genre: String!, authorId: String!): Book
+    addAuthor(name: String!, age: Int!): Author
+    removeUser(email: String!): User
+    removeAuthor(id: String!): Author
+    removeBook(id: String!): Book
   }
 `
 
