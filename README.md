@@ -1,15 +1,15 @@
-# GraphQL endpoint for Junior Developer position in Scandiweb
+# typescript-eslint-prettier
 
-### Overview
+> This is a template repository for fast development using nodejs, ts, eslint and prettier
 
-You are going to need this endpoint in order to implement the assignment given to you (minimalistic storefront).
+## Init
 
-### How to start
+```sh
+yarn init
+```
 
-In order to start this endpoint, follow these steps
+## Dictionary structure
 
-1. Install dependencies
-2. Build the project - `yarn build`
-3. Start the project - `yarn start`
-
->**Note**: During the assignment, do not modify this endpoint. Also, no need to provide it along with your assessment.
+- Root
+  - src: TypeScript source files
+  - build: TypeScript output (ignored by git)

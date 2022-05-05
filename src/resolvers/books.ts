@@ -9,8 +9,8 @@ type Args = {
 
 const booksResolver = async (
 	_parent: unknown,
-	args: Args
-): Promise<Omit<BookDoc & { _id: any; }, never>[]> => {
+	_args: Args
+): Promise<Omit<BookDoc & { _id: any }, never>[]> => {
 	const books = await Book.find({}).populate('Author');
 
 	return books;

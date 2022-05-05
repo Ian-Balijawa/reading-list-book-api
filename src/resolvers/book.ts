@@ -5,7 +5,7 @@ type Args = {
 };
 
 const bookResolver = async (parent: unknown, args: Args):Promise<BookDoc> => {
-    const book = await Book.findById(args.id);
+    const book = await Book.findById(args.id).populate('Author');
     return book;
 };
 
