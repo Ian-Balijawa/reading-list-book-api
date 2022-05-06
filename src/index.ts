@@ -6,7 +6,7 @@ import typeDefs from './schema/schema'
 
 import mongoose from 'mongoose'
 
-const mongoURI = 'mongodb://localhost:27017/reading-list'
+const mongoURI = 'mongodb+srv://ianbalijawa:ianbalijawa@cluster0.bzq23.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
 mongoose.connect(mongoURI)
 
