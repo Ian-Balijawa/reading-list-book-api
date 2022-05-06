@@ -1,11 +1,11 @@
-import Author from "../../models/Author";
-import Book, { BookDoc } from "../../models/Book";
+import Author from '../../models/Author'
+import Book, { BookDoc } from '../../models/Book'
 
 type Args = {
-    name: string;
-    genre: string;
-    authorId: string;
-};
+  name: string
+  genre: string
+  authorId: string
+}
 
 const addBookMutation = async (
   parent: unknown,
@@ -35,4 +35,13 @@ const addBookMutation = async (
   return book
 }
 
-export default addBookMutation;
+const deleteBookMutation = async (
+  parent: unknown,
+  args: { id: string }
+): Promise<BookDoc | null> => {
+  let deletedBook = await Book.findByIdAndRemove(args.id)
+
+  return deletedBook
+}
+
+export { deleteBookMutation, addBookMutation }

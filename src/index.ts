@@ -15,7 +15,7 @@ mongoose.connection.once('open', () => {
 })
 
 const server = new ApolloServer({
-  typeDefs: typeDefs,
+  typeDefs,
   resolvers
 })
 

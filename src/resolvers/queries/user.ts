@@ -1,9 +1,15 @@
-import User, { UserDoc } from "../models/User";
+import User, { UserDoc } from '../../models/User'
+
+const usersResolvers = async (): Promise<UserDoc[]> => {
+  const users = await User.find({})
+
+  return users
+}
 
 type Args = {
-    email: string,
-    name:string,
-};
+  email: string
+  name: string
+}
 
 const userResolver = async (
   parent: unknown,
@@ -23,4 +29,4 @@ const userResolver = async (
   return user
 }
 
-export default userResolver;
+export { userResolver, usersResolvers }
